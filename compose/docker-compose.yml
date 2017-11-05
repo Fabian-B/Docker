@@ -1,0 +1,15 @@
+version: '2'
+#This Compose file defines two services, web and redis
+services:
+  web:
+  #image is built from Dockerfile in current directory
+    build: .
+  #Forwards the exposed port 5000 on the container to port 5000 on the host machine
+    ports:
+     - "5000:5000"
+  #Mounts the project directory on the host to /code inside the container, allowing to modify the code without having to rebuild the image.
+    volumes:
+     - .:/code
+  #The redis service uses a public Redis image pulled from the Docker Hub registry
+  redis:
+    image: "redis:alpine"

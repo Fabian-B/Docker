@@ -1,0 +1,19 @@
+version: '2'
+#This Compose file defines two services, web and db
+services:
+  web:
+  #image is built from Dockerfile in current directory
+    build: .
+  #Forwards the exposed port 5000 on the container to port 5000 on the host machine
+    ports:
+     - "5000:5000"
+  #Mounts the project directory on the host to /code inside the container, allowing to modify the code without having to rebuild the image.
+    volumes:
+     - .:/code
+  #The db service uses a public mssql image pulled from the Docker Hub registry
+  db:
+    image: "microsoft/mssql-server-linux"
+    environment:
+  #The SQL Server container requires a secure password to startup
+      SA_PASSWORD: "ftx8bcVSgGNJquVw"
+      ACCEPT_EULA: "Y"

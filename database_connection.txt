@@ -1,0 +1,7 @@
+Trusted_Connection=True; --> gebruikt windows credentials
+
+f you don't want to use integrated security / trusted connection, you need to specify user id and password explicitly in the connection string 
+(and leave out any reference to Trusted_Connection or Integrated Security)
+
+The connectionstring wordt dus:
+server=yourservername;database=yourdatabase;user id=YourUser;pwd=TopSecret

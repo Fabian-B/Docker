@@ -1,0 +1,21 @@
+version: '3'
+ +
+ +    services:
+ +        web:
+ +            build: .
+ +            ports: 
+ +                - "8000:80"
+ +            depends_on:
+ +                - db
+ +        db:
+ +            image: "microsoft/mssql-server-linux"
+ +            environment:
+ +                SA_PASSWORD: "your_password"
+ +                ACCEPT_EULA: "Y"
+
+Make sure you allocate at least 4GB of memory to Docker Engine. Here is how
+ +    to do it on
+https://docs.docker.com/docker-for-windows/#/advanced
+This is necessary to run the SQL Server on Linux container
+
+
